@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Solitreo"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="card.css" />
+    <!-- <script defer src="script.js"></script> -->
+  </head>
+  <body>
+    <img
+      style="border: 5px solid black"
+      width="150px"
+      src="https://media.tenor.com/ySITUM2KYHYAAAAi/dudu-bubu.gif"
+      alt=""
+    />
+    <div class="container">
+      <div class="envelope"></div>
+      <div class="card">
+        <h1 class="message">
+          Roses are red,<br />Violets are blue,<br />Unexpected '{'<br />on line
+          32.
+        </h1>
+        <div class="heart"></div>
+      </div>
+      <div class="cover"></div>
+      <div class="lid"></div>
+      <div class="shadow"></div>
+    </div>
+
+    <div id="yess">
+      SEND BACK YOUR REPLY
+      <span
+        ><img
+          width="25px"
+          src="	https://media.tenor.com/iIBIiiS0fskAAAAi/mimibubu.gif"
+          alt=""
+      /></span>
+    </div>
+
+    <script>
+      const phoneNumber = "2349024308799"; // replace with your crush's number
+      const sendBtn = document.getElementById("yess");
+      const endModal = document.getElementById("endModal"); // make sure this exists
+
+      sendBtn.addEventListener("click", () => {
+        console.log("Button clicked!");
+
+        const imgURL =
+          "https://media.tenor.com/63IENW605s0AAAAj/dudu-twisting-dance.gif";
+        const message = encodeURIComponent(
+          `YES 💖 I will be your Valentine! ${imgURL}`
+        );
+
+        const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
+
+        // Open WhatsApp with text + image URL
+        window.open(whatsappURL, "_blank");
+
+        // Show modal (optional)
+      });
+    </script>
+  </body>
+</html>

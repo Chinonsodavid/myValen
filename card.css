@@ -1,0 +1,204 @@
+:root {
+  --background: #fee2e9;
+  --light-pink: #fcbbcc;
+  --pink: #fba7bd;
+  --dark-pink: #f980a1;
+  --shadow: #e8c5d0;
+  --card: white;
+  --heart: #f40b4a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-family: Solitreo;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  background: var(--background);
+  background-image: url(image.png);
+  font-family: "Pangolin", cursive;
+  font-size: 1vmin;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+}
+
+.container {
+  position: relative;
+  top: 0vmin;
+}
+
+.envelope {
+  position: relative;
+  background: var(--dark-pink);
+  height: 30vmin;
+  width: 47.9vmin;
+}
+
+.card {
+  position: absolute;
+  background: var(--card);
+  height: 25vmin;
+  width: 43vmin;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  left: 2.5vmin;
+  top: 0vmin;
+  animation: slide-rev 0.2s ease-out;
+}
+
+.message {
+  position: absolute;
+  top: 5vmin;
+}
+
+.cover {
+  position: absolute;
+  height: 0;
+  width: 0;
+  border-bottom: 15vmin solid var(--pink);
+  border-left: 24vmin solid transparent;
+  border-right: 24vmin solid transparent;
+  top: 15vmin;
+  z-index: 3;
+}
+
+.cover::after {
+  content: "";
+  position: absolute;
+  border-left: 24.5vmin solid var(--light-pink);
+  border-bottom: 15vmin solid transparent;
+  border-top: 15vmin solid transparent;
+  top: -15vmin;
+  left: -24vmin;
+}
+
+.cover::before {
+  content: "";
+  position: absolute;
+  border-right: 24.5vmin solid var(--light-pink);
+  border-bottom: 15vmin solid transparent;
+  border-top: 15vmin solid transparent;
+  top: -15vmin;
+  left: -0.5vmin;
+}
+
+.lid {
+  position: absolute;
+  height: 0;
+  width: 0;
+  border-top: 15vmin solid var(--dark-pink);
+  border-left: 24vmin solid transparent;
+  border-right: 24vmin solid transparent;
+  top: 0;
+  transform-origin: top;
+  animation: open-rev 2s;
+}
+
+.container:hover .lid {
+  animation: open 0.5s forwards;
+}
+
+.container:hover .card {
+  animation: slide 0.2s 0.5s forwards;
+}
+
+.shadow {
+  position: relative;
+  top: 3vmin;
+  border-radius: 50%;
+  opacity: 0.7;
+  height: 2vmin;
+  width: 48vmin;
+  background: var(--shadow);
+}
+
+.heart {
+  position: relative;
+  width: 5vmin;
+  height: 4vmin;
+  top: 7vmin;
+  left: -1vmin;
+}
+
+.heart::before,
+.heart::after {
+  content: "";
+  position: absolute;
+  left: 2.5vmin;
+  top: 0;
+  width: 2.5vmin;
+  height: 4vmin;
+  background: var(--heart);
+  border-radius: 2.5vmin 2.5vmin 0 0;
+  transform: rotate(-45deg);
+  transform-origin: 0 100%;
+}
+
+.heart::after {
+  left: 0;
+  transform: rotate(45deg);
+  transform-origin: 100% 100%;
+}
+
+@keyframes open {
+  100% {
+    transform: rotateX(180deg);
+  }
+}
+
+@keyframes slide {
+  100% {
+    transform: translateY(-15vmin);
+    z-index: 2;
+  }
+}
+
+@keyframes open-rev {
+  from {
+    transform: rotateX(-180deg);
+  }
+}
+
+@keyframes slide-rev {
+  from {
+    transform: translateY(-15vmin);
+  }
+}
+
+#yess {
+  /* padding: 10px 42px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* width: 150px; */
+  height: fit-content;
+  padding: 7px 20px;
+  border-radius: 30px;
+  letter-spacing: 1px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  user-select: none;
+  background-color: var(--heart);
+  color: white;
+  border: 2px solid white;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  margin-top: 20px;
+  font-size: 7px;
+}
+
+#yess:hover {
+  transform: scale(1.08);
+  box-shadow: 0 10px 25px rgba(244, 11, 74, 0.35);
+}

@@ -91,3 +91,24 @@ modalClose.addEventListener("click", () => {
     endModal.style.display = "none";
     document.body.style.overflow = "auto";
 });
+
+let title = document.querySelector('#greeting');
+let text = "will you be my valentine ?";
+let index = 1;
+let speed = 100;  // Adjust the speed (faster typing effect)
+let maxSpeed = 50; // Minimum speed for smoother effect
+
+// Use requestAnimationFrame for smoother performance
+function typeWriter() {
+    title.innerText = text.slice(0, index);
+    if (index < text.length) {
+        index++;
+        // Adjust speed dynamically (smoother and faster as it types)
+        setTimeout(typeWriter, speed);
+        if (speed > maxSpeed) {
+            speed -= 5;  // Speed up the typing effect gradually
+        }
+    }
+}
+
+typeWriter();

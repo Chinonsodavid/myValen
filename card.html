@@ -42,6 +42,10 @@
       /></span>
     </div>
 
+    <footer style="position: absolute; bottom: 0; color: rgb(93, 93, 92)">
+      built with ❤️
+    </footer>
+
     <script>
       const phoneNumber = "2349024308799"; // replace with your crush's number
       const sendBtn = document.getElementById("yess");
@@ -50,15 +54,13 @@
       sendBtn.addEventListener("click", () => {
         console.log("Button clicked!");
 
-        const messag = "https://my-valen-pink.vercel.app/reply.html";
-        const message = encodeURIComponent({ messag });
+        const messag = "https://my-valen-pink.vercel.app/reply.html"; // link to your reply page
+        const message = encodeURIComponent(messag); // no object, just the string
 
         const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
 
-        // Open WhatsApp with text + image URL
+        // Open WhatsApp with the URL link
         window.open(whatsappURL, "_blank");
-
-        // Show modal (optional)
       });
     </script>
   </body>

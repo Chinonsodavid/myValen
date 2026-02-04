@@ -27,7 +27,9 @@ body {
   justify-content: center;
   overflow-y: hidden;
 }
-
+a {
+  text-decoration: none;
+}
 .container {
   display: flex;
   flex-direction: column;

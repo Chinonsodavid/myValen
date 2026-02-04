@@ -50,11 +50,8 @@
       sendBtn.addEventListener("click", () => {
         console.log("Button clicked!");
 
-        const imgURL =
-          "https://media.tenor.com/63IENW605s0AAAAj/dudu-twisting-dance.gif";
-        const message = encodeURIComponent(
-          `YES 💖 I will be your Valentine! ${imgURL}`
-        );
+        const messag = "https://my-valen-pink.vercel.app/reply.html";
+        const message = encodeURIComponent({ messag });
 
         const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
 

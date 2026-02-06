@@ -2,83 +2,142 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Valentine</title>
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <title>welcome</title>
     <link
-      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Roboto:wght@300;400;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+Mono+TC&display=swap"
       rel="stylesheet"
     />
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: #fee2e9;
+        margin: 0;
+        font-family: "LXGW WenKai Mono TC", monospace;
+      }
 
-    <link rel="stylesheet" href="style.css" />
-    <script src="script.js" defer></script>
+      .heart-container {
+        width: 50%;
+        cursor: pointer;
+        user-select: none;
+      }
+
+      .heart {
+        width: 100%;
+      }
+
+      .heart-outline {
+        fill: none;
+        stroke: red;
+        stroke-width: 0.4;
+      }
+
+      .heart-fill {
+        fill: red;
+        width: 100%;
+        height: 0%;
+        y: 100%;
+        transition: height 0.1s linear, y 0.1s linear;
+      }
+
+      p {
+        font-size: 2rem;
+      }
+    </style>
   </head>
 
   <body>
-    <div class="container">
+    <div>
+      <p>click and hold on heart to fill</p>
+    </div>
+
+    <div
+      style="
+        position: absolute;
+        bottom: 0;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+      "
+    >
       <img
-        id="mainGif"
-        style="align-self: center"
         src="https://media.tenor.com/63IENW605s0AAAAj/dudu-twisting-dance.gif"
         width="100px"
         alt="slow ass network"
       />
-      <h1>❤️ TRESHIA ❤️</h1>
-      <p class="question">
-        <span id="greeting">will you be my valentine ?</span>
-
-        <span
-          ><img
-            width="40px"
-            src="https://media.tenor.com/K0Op-0SpsvkAAAAi/dudu-cute.gif"
-            alt=""
-        /></span>
-      </p>
-
-      <div class="buttons">
-        <a href="card.html"
-          ><div id="yes">
-            YES
-            <span
-              ><img
-                width="25px"
-                src="	https://media.tenor.com/iIBIiiS0fskAAAAi/mimibubu.gif"
-                alt=""
-            /></span>
-          </div>
-        </a>
-        <div id="no">
-          <div id="text-change">NO</div>
-
-          <span
-            ><img
-              width="25px"
-              src="	https://media.tenor.com/hMrjwfIKGYsAAAAi/iklog.gif"
-              alt=""
-          /></span>
-        </div>
-      </div>
-
-      <p class="quote">“every moment with you feels like a dream come true”</p>
+      <img
+        src="https://media.tenor.com/63IENW605s0AAAAj/dudu-twisting-dance.gif"
+        width="100px"
+        alt="slow ass network"
+      />
     </div>
-    <!-- Modal -->
-    <div id="endModal" class="modal">
-      <div class="modal-content">
-        <img
-          width="100px"
-          src="https://media.tenor.com/tsFBHGxponYAAAAi/bubu-dudu.gif"
-          alt=""
+
+    <div class="heart-container">
+      <svg viewBox="0 0 32 29.6" class="heart">
+        <defs>
+          <clipPath id="heart-clip">
+            <path
+              d="M23.6,0c-3.4,0-6.4,2.1-7.6,5.1C14.8,2.1,11.8,0,8.4,0
+              C3.8,0,0,3.8,0,8.4c0,9.4,16,21.2,16,21.2s16-11.8,16-21.2
+              C32,3.8,28.2,0,23.6,0z"
+            />
+          </clipPath>
+        </defs>
+
+        <path
+          class="heart-outline"
+          d="M23.6,0c-3.4,0-6.4,2.1-7.6,5.1C14.8,2.1,11.8,0,8.4,0
+          C3.8,0,0,3.8,0,8.4c0,9.4,16,21.2,16,21.2s16-11.8,16-21.2
+          C32,3.8,28.2,0,23.6,0z"
         />
-        <p>Please just click on yes at this point</p>
-        <button id="modalClose">OKAY I WILL</button>
-      </div>
+
+        <rect class="heart-fill" clip-path="url(#heart-clip)" />
+      </svg>
     </div>
 
-    <footer style="position: absolute; bottom: 0; color: rgb(93, 93, 92)">
-      built with ❤️
-    </footer>
+    <script>
+      const heart = document.querySelector(".heart-container");
+      const fill = document.querySelector(".heart-fill");
+
+      let fillLevel = 0;
+      let interval = null;
+      let redirected = false;
+
+      function startFilling() {
+        if (interval || redirected) return;
+
+        interval = setInterval(() => {
+          if (fillLevel < 100) {
+            fillLevel += 1;
+            fill.style.height = fillLevel + "%";
+            fill.style.y = 100 - fillLevel + "%";
+          }
+
+          if (fillLevel >= 100) {
+            clearInterval(interval);
+            redirected = true;
+
+            // 👇 CHANGE THIS TO YOUR NEXT PAGE
+            window.location.href = "home.html";
+          }
+        }, 20);
+      }
+
+      function stopFilling() {
+        clearInterval(interval);
+        interval = null;
+      }
+
+      heart.addEventListener("mousedown", startFilling);
+      heart.addEventListener("mouseup", stopFilling);
+      heart.addEventListener("mouseleave", stopFilling);
+
+      // Mobile support
+      heart.addEventListener("touchstart", startFilling);
+      heart.addEventListener("touchend", stopFilling);
+    </script>
   </body>
 </html>

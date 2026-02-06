@@ -193,7 +193,7 @@ body {
   background-color: var(--heart);
   color: white;
   border: 2px solid white;
-  font-family: Georgia, "Times New Roman", Times, serif;
+  font-family: "LXGW WenKai Mono TC", monospace;
   margin-top: 20px;
   font-size: 7px;
 }

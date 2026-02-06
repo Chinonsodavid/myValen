@@ -39,17 +39,17 @@ a {
 
 /* Title */
 .container h1 {
-  font-family: "Great Vibes", cursive;
+  font-family: "LXGW WenKai Mono TC", monospace;
   font-size: clamp(52px, 6vw, 70px);
   color: var(--dark-pink);
-  letter-spacing: 2px;
+  letter-spacing: 3px;
 }
 
 /* Question */
 .container .question {
-  font-family: "Great Vibes", cursive;
+  font-family: "LXGW WenKai Mono TC", monospace;
   font-weight: 400;
-  font-size: clamp(32px, 6vw, 70px);
+  font-size: 25px;
   text-align: center;
 }
 
@@ -58,7 +58,6 @@ a {
   display: flex;
   flex-direction: row;
   align-self: center;
-
   gap: clamp(14px, 4vw, 30px);
 }
 
@@ -108,7 +107,7 @@ a {
 /* Quote */
 .container .quote {
   font-size: clamp(24px, 2.5vw, 20px);
-  font-family: "Great Vibes", cursive;
+  font-family: "LXGW WenKai Mono TC", monospace;
   opacity: 0.85;
   margin-top: 10px;
 }
